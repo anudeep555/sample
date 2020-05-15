@@ -1,0 +1,30 @@
+<services-dppolicy>
+   <env name="INT">
+      <xmlmgr>Logging_XMLManager</xmlmgr>
+      <DeploymentPolicyFlag>false</DeploymentPolicyFlag>
+      <DeploymentPolicy></DeploymentPolicy>
+      <files>
+         <file source-file="property.xml" source-dir="files/INT" target-dir="local:/utils" target-file="property.xml"/>
+         <file source-file="test.xsl" source-dir="files/INT" target-dir="local:/utils" target-file="test.xsl"/>
+      </files>
+   </env>
+</services-dppolicy>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

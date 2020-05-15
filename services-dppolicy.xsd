@@ -1,0 +1,95 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="servicesdppolicy">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="env" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="files">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="file" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="file">
+      <xs:complexType>
+         <xs:attribute name="target-file" use="required">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"></xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
+         <xs:attribute name="target-dir" use="required">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"></xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
+         <xs:attribute name="source-file" use="required">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"></xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
+         <xs:attribute name="source-dir" use="required">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"></xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="env">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="xmlmgr"/>
+            <xs:element ref="DeploymentPolicyFlag"/>
+            <xs:element ref="DeploymentPolicy"/>
+            <xs:element ref="files"/>
+         </xs:sequence>
+         <xs:attribute name="name" use="required">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:enumeration value="DEV"/>
+                  <xs:enumeration value="INT"/>
+                  <xs:enumeration value="QA"/>
+                  <xs:enumeration value="PROD"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="Value">
+      <xs:simpleType>
+         <xs:restriction base="xs:string"></xs:restriction>
+      </xs:simpleType>
+   </xs:element>
+   <xs:element name="Type">
+      <xs:simpleType>
+         <xs:restriction base="xs:string"></xs:restriction>
+      </xs:simpleType>
+   </xs:element>
+   <xs:element name="Property">
+      <xs:complexType/>
+   </xs:element>
+   <xs:element name="ModifiedConfig">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="Match"/>
+            <xs:element ref="Type"/>
+            <xs:element ref="Property"/>
+            <xs:element ref="Value"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="Match" type="xs:string"/>
+   <xs:element name="FilteredConfig" type="xs:string"/>
+   <xs:element name="xmlmgr" type="xs:string"/>
+   <xs:element name="DeploymentPolicyFlag" type="xs:string"/>
+   <xs:element name="DeploymentPolicy">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="ModifiedConfig" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="FilteredConfig" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

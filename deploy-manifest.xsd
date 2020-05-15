@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="importconfig">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="files" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+         <xs:attribute name="type" use="required">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:enumeration value="delta"/>
+                  <xs:enumeration value="full"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
+         <xs:attribute name="files" type="xs:boolean" use="optional"/>
+         <xs:attribute name="config" type="xs:boolean" use="optional"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="files">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="file" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="file">
+      <xs:complexType>
+         <xs:attribute name="source-file" use="required">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <!--<xs:enumeration value="JWT_Serviceconfig.xml"/>
+                  <xs:enumeration value="generate-uuid.xsl"/>-->
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="dpmanifest">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="importconfig"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

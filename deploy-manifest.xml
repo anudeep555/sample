@@ -1,0 +1,11 @@
+<dpmanifest>
+   <!--deployment types: delta,full-->
+   <!--delta deployment: Used for deploying only xcfg file or both files-->
+   <!--<importconfig type="delta" config="false" files="true">
+<files>
+<file source-file="ErrorRouting.xsl"/>
+</files>
+</importconfig>-->
+   <!--full deployment: Used for deploying full serivce-->
+   <importconfig type="full"/>
+</dpmanifest>	
